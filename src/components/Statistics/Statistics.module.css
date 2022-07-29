@@ -1,0 +1,21 @@
+.title  {
+    padding: 20px 10px;
+
+    font-size: 36px;
+    font-weight: 500;
+}
+
+.list {
+    padding: 20px 10px;
+
+    list-style-type: none;
+}
+
+.item:not(:last-child) {
+    margin-bottom: 14px;
+}
+
+.feedbackKey {
+    font-size: 20px;
+    font-weight: 400;
+}
