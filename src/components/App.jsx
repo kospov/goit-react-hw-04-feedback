@@ -1,5 +1,6 @@
 import { Component } from 'react';
-import Feedback from './Feedback/Feedback';
+import Section from './Section/Section';
+import FeedbackOptions from './FeedbackOptions/FeedbackOptions';
 import Statistics from './Statistics/Statistics';
 
 class App extends Component {
@@ -9,7 +10,7 @@ class App extends Component {
     bad: 0,
   };
 
-  handleBtnClick = (e) => {
+  handleBtnClick = e => {
     const { name } = e.target;
     this.setState(prev => {
       return { [name]: prev[name] + 1 };
@@ -28,43 +29,37 @@ class App extends Component {
   countTotalFeedback = () => {
     const { good, bad, neutral } = this.state;
 
-    return good + bad + neutral
-  }
+    return good + bad + neutral;
+  };
 
   countPositiveFeedbackPercentage = () => {
     const { good, bad, neutral } = this.state;
 
-    return good + bad + neutral !== 0 ? Math.ceil((good / (good + bad + neutral)) * 100) : 0
-  }
+    return good + bad + neutral !== 0
+      ? Math.ceil((good / (good + bad + neutral)) * 100)
+      : 0;
+  };
 
-  
   render() {
+    const { good, neutral, bad } = this.state;
     return (
-      <div
-        style={{
-          height: '100vh',
-          display: 'flex',
-          // justifyContent: 'center',
-          // alignItems: 'center',
-          // fontSize: 40,
-          color: '#010101',
-
-          flexDirection: 'column',
-        }}
-      >
-        <Feedback
-          name={this.state}
-          handleBtnClick={this.handleBtnClick}
+      <Section title="Feedback form">
+        <FeedbackOptions
+          options={this.state}
+          onLeaveFeedback={this.handleBtnClick}
         />
-
         <Statistics
-          name={this.state}
-          countTotalFeedback={this.countTotalFeedback}
-          countPositiveFeedbackPercentage={ this.countPositiveFeedbackPercentage}
+          good={good}
+          neutral={neutral}
+          bad={bad}
+          total={this.countTotalFeedback}
+          positivePercentage={this.countPositiveFeedbackPercentage}
         />
-      </div>
+      </Section>
     );
   }
 }
+
+
 
 export default App;

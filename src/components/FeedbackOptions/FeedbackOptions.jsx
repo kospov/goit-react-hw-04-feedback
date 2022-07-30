@@ -1,6 +1,7 @@
-import s from './Feedback.module.css';
+import s from './FeedbackOptions.module.css';
 
-const Feedback = ({ handleBtnClick}) => {
+const FeedbackOptions = ({ options, onLeaveFeedback }) => {
+  
   return (
     <>
       <h2 className={s.title}>Please leave feedback</h2>
@@ -9,7 +10,7 @@ const Feedback = ({ handleBtnClick}) => {
           type="button"
           name="good"
           className={s.btn}
-          onClick={handleBtnClick}
+          onClick={onLeaveFeedback}
         >
           Good
         </button>
@@ -17,7 +18,7 @@ const Feedback = ({ handleBtnClick}) => {
           type="button"
           name="neutral"
           className={s.btn}
-          onClick={handleBtnClick}
+          onClick={onLeaveFeedback}
         >
           Neutral
         </button>
@@ -25,7 +26,7 @@ const Feedback = ({ handleBtnClick}) => {
           type="button"
           name="bad"
           className={s.btn}
-          onClick={handleBtnClick}
+          onClick={onLeaveFeedback}
         >
           Bad
         </button>
@@ -34,4 +35,4 @@ const Feedback = ({ handleBtnClick}) => {
   );
 };
 
-export default Feedback;
+export default FeedbackOptions;

@@ -1,7 +1,12 @@
 import s from './Statistics.module.css';
 
-const Statistics = ({ name, countTotalFeedback, countPositiveFeedbackPercentage }) => {
-  const { good, neutral, bad } = name;
+const Statistics = ({
+  good,
+  neutral,
+  bad,
+  total,
+  positivePercentage,
+}) => {
   return (
     <>
       <h2 className={s.title}>Statistics</h2>
@@ -9,31 +14,30 @@ const Statistics = ({ name, countTotalFeedback, countPositiveFeedbackPercentage 
         <ul className={s.list}>
           <li className={s.item}>
             <p className={s.feedbackKey}>
-              Good:{' '}<span className={s.feedbackValue}>{good}</span>
+              Good: <span className={s.feedbackValue}>{good}</span>
             </p>
           </li>
           <li className={s.item}>
             <p className={s.feedbackKey}>
-              Neutral:{' '}<span className={s.feedbackValue}>{neutral}</span>
+              Neutral: <span className={s.feedbackValue}>{neutral}</span>
             </p>
           </li>
           <li className={s.item}>
             <p className={s.feedbackKey}>
-              Bad:{' '}<span className={s.feedbackValue}>{bad}</span>
+              Bad: <span className={s.feedbackValue}>{bad}</span>
             </p>
           </li>
           <li className={s.item}>
             <p className={s.feedbackKey}>
               Total:{' '}
-              <span className={s.feedbackValue}>{countTotalFeedback()}</span>
+              <span className={s.feedbackValue}>{total()}</span>
             </p>
           </li>
           <li className={s.item}>
             <p className={s.feedbackKey}>
               Positive feedback:{' '}
               <span className={s.feedbackValue}>
-                {countPositiveFeedbackPercentage()}
-                %
+                {positivePercentage()}%
               </span>
             </p>
           </li>
