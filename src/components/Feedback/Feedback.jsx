@@ -1,6 +1,6 @@
 import s from './Feedback.module.css';
 
-const Feedback = ({ handleBtnClick }) => {
+const Feedback = ({ handleBtnClick}) => {
   return (
     <>
       <h2 className={s.title}>Please leave feedback</h2>

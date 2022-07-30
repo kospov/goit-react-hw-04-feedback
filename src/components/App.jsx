@@ -16,6 +16,28 @@ class App extends Component {
     });
   };
 
+  // countTotalFeedback = () => {
+  //   const values = Object.values(this.state);
+  //   let total = 0;
+  //   for (const value of values) {
+  //     total += value;
+  //     return total;
+  //   }
+  // }
+
+  countTotalFeedback = () => {
+    const { good, bad, neutral } = this.state;
+
+    return good + bad + neutral
+  }
+
+  countPositiveFeedbackPercentage = () => {
+    const { good, bad, neutral } = this.state;
+
+    return good + bad + neutral !== 0 ? Math.ceil((good / (good + bad + neutral)) * 100) : 0
+  }
+
+  
   render() {
     return (
       <div
@@ -30,9 +52,16 @@ class App extends Component {
           flexDirection: 'column',
         }}
       >
-        <Feedback name={this.state} handleBtnClick={this.handleBtnClick} />
+        <Feedback
+          name={this.state}
+          handleBtnClick={this.handleBtnClick}
+        />
 
-        <Statistics name={this.state} />
+        <Statistics
+          name={this.state}
+          countTotalFeedback={this.countTotalFeedback}
+          countPositiveFeedbackPercentage={ this.countPositiveFeedbackPercentage}
+        />
       </div>
     );
   }
