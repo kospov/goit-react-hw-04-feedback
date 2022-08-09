@@ -40,8 +40,9 @@ const FeedbackOptions = ({
 };
 
 FeedbackOptions.propTypes = {
-  options: PropTypes.object,
-  onLeaveFeedback: PropTypes.func,
+  onLeaveGoodFeedback: PropTypes.func,
+  onLeaveNeutralFeedback: PropTypes.func,
+  onLeaveBadFeedback: PropTypes.func,
 };
 
 export default FeedbackOptions;
