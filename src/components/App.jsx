@@ -8,16 +8,22 @@ const App = () => {
   const [neutral, setNeutral] = useState(0);
   const [bad, setBad] = useState(0);
 
-  const handleGoodBtnClick = () => {
-    setGood(prev => prev + 1);
-  };
+  const handleBtnClick = e => {
+    const { name } = e.target;
 
-  const handleNeutralBtnClick = () => {
-    setNeutral(prev => prev + 1);
-  };
-
-  const handleBadBtnClick = () => {
-    setBad(prev => prev + 1);
+    switch (name) {
+      case 'good':
+        setGood(prev => prev + 1);
+        break;
+      case 'neutral':
+        setNeutral(prev => prev + 1);
+        break;
+      case 'bad':
+        setBad(prev => prev + 1);
+        break;
+      default:
+        break;
+    }
   };
 
   const countTotalFeedback = () => {
@@ -32,11 +38,7 @@ const App = () => {
 
   return (
     <Section title="Feedback form">
-      <FeedbackOptions
-        onLeaveGoodFeedback={handleGoodBtnClick}
-        onLeaveNeutralFeedback={handleNeutralBtnClick}
-        onLeaveBadFeedback={handleBadBtnClick}
-      />
+      <FeedbackOptions onLeaveFeedback={handleBtnClick} />
       <Statistics
         good={good}
         neutral={neutral}
